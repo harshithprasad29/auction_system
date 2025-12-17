@@ -1,0 +1,1 @@
+auto_bid_resolver.rb
