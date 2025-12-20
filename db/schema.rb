@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,25 +12,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_16_094300) do
-  create_table "auctions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.text "description"
-    t.datetime "ends_at"
-    t.integer "minimum_selling_price"
-    t.string "title"
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema[8.1].define(version: 20_251_220_075_228) do
+  create_table 'auctions', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.text 'description'
+    t.datetime 'ends_at'
+    t.integer 'minimum_selling_price'
+    t.string 'status', default: 'open', null: false
+    t.string 'title'
+    t.datetime 'updated_at', null: false
+    t.index ['status'], name: 'index_auctions_on_status'
   end
 
-  create_table "bids", force: :cascade do |t|
-    t.integer "amount"
-    t.integer "auction_id", null: false
-    t.string "bid_type"
-    t.string "bidder_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["auction_id"], name: "index_bids_on_auction_id"
+  create_table 'bids', force: :cascade do |t|
+    t.integer 'amount'
+    t.integer 'auction_id', null: false
+    t.string 'bid_type'
+    t.string 'bidder_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['auction_id'], name: 'index_bids_on_auction_id'
   end
 
-  add_foreign_key "bids", "auctions"
+  add_foreign_key 'bids', 'auctions'
 end

@@ -1,11 +1,13 @@
-module AuctionSystem
-	class Bid
-		attr_reader :bidder_id, :amount, :type
+# frozen_string_literal: true
 
-		def initialize(bidder_id:, amount:, type:)
-			@bidder_id = bidder_id
-			@amount = amount
-			@type = type
-		end
-	end
+module AuctionSystem
+  class Bid
+    attr_reader :bidder_id, :amount, :type
+
+    def initialize(bidder_id:, amount:, type:)
+      @bidder_id = bidder_id
+      @amount = amount
+      @type = type
+    end
+  end
 end

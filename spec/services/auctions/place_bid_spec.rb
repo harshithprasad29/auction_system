@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Auctions::PlaceBid do
@@ -25,13 +27,13 @@ RSpec.describe Auctions::PlaceBid do
   it 'rejects bid lower than current highest + increment' do
     auction.bids.create!(bidder_id: 'user_1', amount: 10, bid_type: 'manual')
 
-    expect {
+    expect do
       service.call(
         auction: auction,
         bidder_id: 'user_2',
         amount: 10
       )
-    }.to raise_error(ArgumentError)
+    end.to raise_error(ArgumentError)
   end
 
   it 'allows higher manual bid' do

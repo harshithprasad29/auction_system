@@ -1,0 +1,42 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.4
+  SuggestExtensions: false
+
+# Documentation comments are useful for libraries, not Rails apps
+Style/Documentation:
+  Enabled: false
+
+# OpenStruct is acceptable in specs for readability
+Style/OpenStructUse:
+  Exclude:
+    - 'spec/**/*'
+
+# Line length relaxed for real-world readability
+Layout/LineLength:
+  Max: 120
+
+# Service objects and domain logic naturally contain orchestration logic.
+# Enforcing strict metrics here hurts readability more than it helps.
+Metrics/MethodLength:
+  Exclude:
+    - 'app/services/**/*'
+    - 'lib/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/services/**/*'
+    - 'lib/**/*'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'lib/**/*'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'lib/**/*'
+
+# Specs are intentionally verbose and descriptive
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
